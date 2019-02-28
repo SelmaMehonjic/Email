@@ -1,0 +1,14 @@
+C:\Users\Tijana Tomic\Desktop\Send and track\bin\Debug\netcoreapp2.2\Send and track.deps.json
+C:\Users\Tijana Tomic\Desktop\Send and track\bin\Debug\netcoreapp2.2\Send and track.runtimeconfig.json
+C:\Users\Tijana Tomic\Desktop\Send and track\bin\Debug\netcoreapp2.2\Send and track.runtimeconfig.dev.json
+C:\Users\Tijana Tomic\Desktop\Send and track\bin\Debug\netcoreapp2.2\Send and track.dll
+C:\Users\Tijana Tomic\Desktop\Send and track\bin\Debug\netcoreapp2.2\Send and track.pdb
+C:\Users\Tijana Tomic\Desktop\Send and track\obj\Debug\netcoreapp2.2\Send and track.csprojAssemblyReference.cache
+C:\Users\Tijana Tomic\Desktop\Send and track\obj\Debug\netcoreapp2.2\Send and track.csproj.CoreCompileInputs.cache
+C:\Users\Tijana Tomic\Desktop\Send and track\obj\Debug\netcoreapp2.2\Send and track.RazorAssemblyInfo.cache
+C:\Users\Tijana Tomic\Desktop\Send and track\obj\Debug\netcoreapp2.2\Send and track.RazorAssemblyInfo.cs
+C:\Users\Tijana Tomic\Desktop\Send and track\obj\Debug\netcoreapp2.2\Send and track.AssemblyInfoInputs.cache
+C:\Users\Tijana Tomic\Desktop\Send and track\obj\Debug\netcoreapp2.2\Send and track.AssemblyInfo.cs
+C:\Users\Tijana Tomic\Desktop\Send and track\obj\Debug\netcoreapp2.2\Send and track.RazorTargetAssemblyInfo.cache
+C:\Users\Tijana Tomic\Desktop\Send and track\obj\Debug\netcoreapp2.2\Send and track.dll
+C:\Users\Tijana Tomic\Desktop\Send and track\obj\Debug\netcoreapp2.2\Send and track.pdb
