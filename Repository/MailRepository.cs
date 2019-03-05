@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Send_and_track.Data;
@@ -14,16 +16,16 @@ namespace Send_and_track.Repository
             _context = context;
         }
 
-        public async Task<Attachment> GetAttachments(int id)
+        public async Task<IEnumerable<Attachment>> GetAttachments(int id)
         {
-            var attachment = await _context.Attachment.FirstOrDefaultAsync(a => a.EmailId == id);
+            var attachment = await _context.Attachment.Where(a => a.EmailId == id).ToListAsync();
             return attachment;
         }
 
 
         public async Task<byte[]> GetAttachmentByteArray(int id)
         {
-            var attachment = await _context.Attachment.FirstOrDefaultAsync(a => a.EmailId == id);
+            var attachment = await _context.Attachment.FirstOrDefaultAsync(a => a.Id == id);
             return attachment.BinaryFile;
         }
 
@@ -51,12 +53,23 @@ namespace Send_and_track.Repository
         public async Task<Attachment> Updateatt(int id)
         {
 
-            var att = await GetAttachments(id);
+            var att = await GetAttachmentAsync(id);
             att.IsOpened = true;
             _context.Update(att);
             await _context.SaveChangesAsync();
             return att;
         }
 
+        public async Task<Attachment> GetAttachmentAsync(int id)
+        {
+            var attachment = await _context.Attachment.FirstOrDefaultAsync(a => a.Id == id);
+            return attachment;
+        }
+
+        public async Task<Email> GetEmail(int id)
+        {
+                var email = await _context.Email.FirstOrDefaultAsync(a => a.Id == id);
+            return email;
+        }
     }
 }
