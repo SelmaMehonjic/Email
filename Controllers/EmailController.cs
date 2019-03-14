@@ -7,10 +7,15 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Send_and_track.DTO;
 using Send_and_track.models;
 using Send_and_track.Repository;
+using System.Web;
+using System;
+using System.Net.Http;
+using System.Collections.Generic;
 
 namespace Send_and_track.Controllers
 {
@@ -46,11 +51,8 @@ namespace Send_and_track.Controllers
             mail.Subject = email.Subject;
             string Body = email.Body;
             var attlist = await _repository.GetAttachments(email.Id);
-            foreach (var att in attlist)
-            {
-                System.Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaa" + att.Id);
-                Body = Body + " http://localhost:5000/api/email/" + att.Id;
-            }
+
+                Body = Body + " http://localhost:4200/anothertab/" +email.Id;
             mail.Body = Body;
             mail.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient();
@@ -70,8 +72,7 @@ namespace Send_and_track.Controllers
         {
             var pdfBytes = await _repository.GetAttachmentByteArray(id);
             FileResult fileResult = new FileContentResult(pdfBytes, "application/pdf");
-            fileResult.FileDownloadName = "Report.pdf";
-            await _repository.Updateatt(id);
+            // await _repository.Updateatt(id);
             return fileResult;
 
         }
@@ -87,6 +88,27 @@ namespace Send_and_track.Controllers
         }
 
 
+
+        [HttpGet("att/{id}")]
+
+        public async Task<IActionResult> GetAtt(int id)
+        {
+            var att = await _repository.GetAttachment(id);
+            return Ok(att);
+
+        }
+
+
+
+
+        [HttpPut("update")]
+
+        public async Task<IActionResult> UpdateAtt([FromBody] models.Attachment att)
+        {
+            await _repository.Updateatt(att);
+            return Ok();
+
+        }
 
         [HttpPost("att")]
 
@@ -110,5 +132,16 @@ namespace Send_and_track.Controllers
             }
 
         }
+
+        [HttpGet("attach/{id}")]
+
+        public async Task<IActionResult> GetAttByImailId(int id)
+        {
+            var att = await _repository.GetAttachments(id);
+            System.Console.WriteLine(att);
+            var mapped = _mapper.Map<IEnumerable<attformailDTO>>(att);
+            return Ok(mapped);
+        }
+
     }
 }

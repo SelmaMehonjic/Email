@@ -18,8 +18,8 @@ namespace Send_and_track.Repository
 
         public async Task<IEnumerable<Attachment>> GetAttachments(int id)
         {
-            var attachment = await _context.Attachment.Where(a => a.EmailId == id).ToListAsync();
-            return attachment;
+            var attachments = await _context.Attachment.Where(a => a.EmailId == id).ToListAsync();
+            return attachments;
         }
 
 
@@ -42,20 +42,12 @@ namespace Send_and_track.Repository
             await _context.SaveChangesAsync();
             return email;
         }
-        public async Task<Email> UpdateEmail(Email email)
-        {
-            _context.Update(email);
-            await _context.SaveChangesAsync();
-            var att = await Updateatt(email.Id);
-            return email;
-        }
+   
 
-        public async Task<Attachment> Updateatt(int id)
+        public async Task<Attachment> Updateatt(Attachment att)
         {
 
-            var att = await GetAttachmentAsync(id);
-            att.IsOpened = true;
-            _context.Update(att);
+            _context.Attachment.Update(att);
             await _context.SaveChangesAsync();
             return att;
         }
@@ -68,8 +60,14 @@ namespace Send_and_track.Repository
 
         public async Task<Email> GetEmail(int id)
         {
-                var email = await _context.Email.FirstOrDefaultAsync(a => a.Id == id);
+            var email = await _context.Email.FirstOrDefaultAsync(a => a.Id == id);
             return email;
+        }
+
+        public async Task<Attachment> GetAttachment(int id)
+        {
+            var attachment = await _context.Attachment.FirstOrDefaultAsync(a => a.Id == id);
+            return attachment;
         }
     }
 }

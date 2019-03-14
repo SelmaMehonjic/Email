@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Send_and_track.Data;
 
 namespace Send_and_track.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20190313130905_Percent")]
+    partial class Percent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,9 +33,9 @@ namespace Send_and_track.Migrations
 
                     b.Property<bool>("IsOpened");
 
-                    b.Property<decimal?>("Percent");
+                    b.Property<decimal>("Percent");
 
-                    b.Property<int?>("TotalPage");
+                    b.Property<int>("TotalPage");
 
                     b.HasKey("Id");
 

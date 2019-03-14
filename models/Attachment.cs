@@ -9,5 +9,8 @@ namespace Send_and_track.models
         public int EmailId { get; set; }
 
         public bool IsOpened { get; set; }
+        public int? TotalPage { get; set; }
+        public decimal? Percent { get; set; }
+
     }
 }

@@ -11,6 +11,7 @@ namespace Send_and_track.Helper
             CreateMap<EMailDTO, Email>();
             CreateMap<AttachmentDTO, Attachment>();
             CreateMap<attachmentforsaveDTO, Attachment>();
+            CreateMap<attformailDTO, Attachment>();
 
         }
     }

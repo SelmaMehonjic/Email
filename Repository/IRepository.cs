@@ -12,8 +12,9 @@ namespace Send_and_track.Repository
          Task<IEnumerable<Attachment>> GetAttachments(int id);
          Task<Attachment> GetAttachmentAsync(int id);
 
-         Task<Email> UpdateEmail(Email email);
-         Task<Attachment> Updateatt(int id);
+        //  Task<Email> UpdateEmail(Email email);
+         Task<Attachment> Updateatt(Attachment att);
          Task<byte[]> GetAttachmentByteArray(int id);
+         Task<Attachment> GetAttachment(int id);
     }
 }
